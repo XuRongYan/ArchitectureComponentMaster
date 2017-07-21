@@ -4,7 +4,6 @@ import android.arch.persistence.room.Room;
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
-import android.util.Log;
 
 import com.rongyant.architecturecomponentmaster.db.AppDataBase;
 import com.rongyant.architecturecomponentmaster.db.dao.DairyDao;
@@ -106,15 +105,9 @@ public class SimpleDiaryTest {
         entity3.setDiaryId(2);
         entity3.setDairyContent("test test666");
         entity3.setDate(new Date(System.currentTimeMillis()));
-        List<DairyEntity> list2 = dairyDao.loadAll();
-        for (int i = 0; i < list2.size(); i++) {
-            Log.d("testDiary", list2.get(i).toString());
-        }
+
         dairyDao.update(entity3);
-        List<DairyEntity> list1 = dairyDao.loadAll();
-        for (int i = 0; i < list1.size(); i++) {
-            Log.d("testDiary", list1.get(i).toString());
-        }
+
         DairyEntity list = dairyDao.loadDairiesSync(1, 2);
         Assert.assertThat(list, CoreMatchers.equalTo(entity3));
     }
