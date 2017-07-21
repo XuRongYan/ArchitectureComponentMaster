@@ -1,6 +1,7 @@
 package com.rongyant.architecturecomponentmaster.db.entity;
 
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 
 import com.rongyant.architecturecomponentmaster.model.User;
@@ -8,10 +9,11 @@ import com.rongyant.architecturecomponentmaster.model.User;
 /**
  * Created by XRY on 2017/7/19.
  */
-@Entity(tableName = "users")
+@Entity(tableName = "users", indices = @Index(value = {"userName"}, unique = true))
 public class UserEntity implements User{
     @PrimaryKey(autoGenerate = true)
     private int userId;
+
     private String userName;
     private String psw;
 

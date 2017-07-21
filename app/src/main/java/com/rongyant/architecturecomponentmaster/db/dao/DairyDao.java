@@ -18,13 +18,13 @@ import java.util.List;
 @Dao
 public interface DairyDao {
     @Query("SELECT * FROM dairies where userId = :userId AND diaryId = :diaryId")
-    LiveData<List<DairyEntity>> loadDairies(int userId, int diaryId);
+    LiveData<DairyEntity> loadDairies(int userId, int diaryId);
 
     @Query("SELECT * FROM dairies where userId = :userId AND diaryId = :diaryId")
     DairyEntity loadDairiesSync(int userId, int diaryId);
 
-    @Query("SELECT * FROM dairies")
-    List<DairyEntity> loadAll();
+    @Query("SELECT * FROM dairies where userId = :userId")
+    LiveData<List<DairyEntity>> loadAll(int userId);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertAll(List<DairyEntity> dairyEntities);

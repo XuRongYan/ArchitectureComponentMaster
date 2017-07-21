@@ -6,6 +6,10 @@
 
     <data>
 
+        <variable
+            name="callback"
+            type="com.rongyant.architecturecomponentmaster.ui.MainAtyClickCallback"/>
+
     </data>
 
 
@@ -22,7 +26,9 @@
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
             android:fitsSystemWindows="true"
-
+            app:title="@string/string_login"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:theme="@style/ThemeOverlay.AppCompat.ActionBar"
             />
 
 
@@ -75,7 +81,9 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/dimen_12sp"
-                android:text="@string/string_register_new_user"/>
+                android:text="@string/string_register_new_user"
+                android:onClick="@{()->callback.onRegisterClick()}"
+                />
 
 
         </LinearLayout>
